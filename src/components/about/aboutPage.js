@@ -6,7 +6,12 @@
 var React = require('react');
 
 var AboutPage = React.createClass({
-   render: function() {
+	statics: {
+		componentWillAppear: function() {
+			console.log('about component will unmount');
+		}
+	},
+	render: function() {
         return (
             <div>
                 <h1>About</h1>
