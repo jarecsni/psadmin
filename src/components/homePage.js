@@ -4,6 +4,7 @@
 'use strict';
 
 var React = require('react');
+var Link = require('react-router').Link;
 
 var HomePage = React.createClass({
     render: function() {
@@ -11,6 +12,7 @@ var HomePage = React.createClass({
             <div className="jumbotron">
                 <h1>Pluralsight Admin</h1>
                 <p>React - React Router - Flux</p>
+                <Link to="about" className="btn btn-primary btn-lg">Learn More</Link>
             </div>
         );
     }
