@@ -17,6 +17,7 @@ var config = {
         css: [
             'node_modules/bootstrap/dist/css/bootstrap.min.css',
             'node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
+			'node_modules/toastr/build/toastr.css'
         ],
         js: './src/**/*.js',
         images: './src/images/*',
@@ -47,7 +48,7 @@ gulp.task('html', function() {
 });
 
 gulp.task('js', function() {
-    browserify(config.paths.mainJs)
+    browserify(config.paths.mainJs, {debug: true})
         .transform(reactify)
         .bundle()
         .on('error', console.error.bind(console))
