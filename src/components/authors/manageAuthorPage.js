@@ -6,7 +6,8 @@
 var React = require('react');
 var Router = require('react-router');
 var AuthorForm = require('./authorForm');
-var AuthorApi = require('../../api/authorApi');
+var AuthorAction = require('../../actions/authorActions');
+var AuthorStore = require('../../stores/authorStore');
 var toastr = require('toastr');
 
 var ManageAuthorPage = React.createClass({
@@ -35,7 +36,7 @@ var ManageAuthorPage = React.createClass({
 		// calling set state will not cause re-render
 		var authorId = this.props.params.id;
 		if (authorId) {
-			this.setState({author: AuthorApi.getAuthorById(authorId)});
+			this.setState({author: AuthorStore.getAuthorById(authorId)});
 		}
 	},
 	setAuthorState: function(event) {
@@ -63,7 +64,7 @@ var ManageAuthorPage = React.createClass({
 		if (!this.authorFormIsValid()) {
 			return;
 		}
-		AuthorApi.saveAuthor(this.state.author);
+		AuthorAction.createAuthor(this.state.author);
 		toastr.success("Author saved.");
 		this.setState({dirty: false});
 		this.transitionTo("authors");
